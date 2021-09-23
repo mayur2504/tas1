@@ -1,0 +1,15 @@
+body{
+    background-color:dimgray;
+    color: whitesmoke;
+}
+
+.form-control{
+    background-color:lightgrey;
+}
+.colorjumbo-{
+    background-color:floralwhite;
+}
+.st-font{
+    font-family: 'Crimson Pro', serif;
+        font-size: 48px;
+}

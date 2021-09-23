@@ -1,0 +1,55 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block msg %}
+
+
+
+
+{% endblock msg %}
+
+{% block side %}
+<div class="col-sm-2 text-white my-5 text-center">
+    <h4 class="my-5">Profile</h4>
+    <h5 class="text-info st-font">{{name}}</h5>
+</div>
+
+
+        {% endblock side %}
+
+{% block contain %}
+<div class="col-sm-10">
+    <h3 class="my-5">Dashboard</h3>
+    
+    <h4 class="text-center alert alert-info mt-3">Show Post</h4>
+    {% if datas %}
+    <table class="table bg-white table-hover">
+        <thead>
+          <tr>
+            <th scope="col" style="width: 2%">ID</th>
+            <th scope="col" style="width: 28%">Title</th>
+            <th scope="col" style="width: 54%">Description</th>
+            <th scope="col" style="width: 16%">Action</th>
+          </tr>
+        </thead>
+        {% for data in datas %}
+        <tbody>
+          <tr>
+            <th scope="row">{{data.id}}</th>
+            <td>{{data.headline}}</td>
+            <td>{{data.desc}}</td>
+            <td class="text-center"><a href="{% url 'Updatepost' data.id %}" class="btn btn-warning btn-sm">Edit</a>
+            <a href="{% url 'Deletepost' data.id %}" class="btn btn-danger btn-sm">Delete</a>
+            <!--<form action="{% url 'Deletepost' data.id %}" method="POST">{% csrf_token %} <input type="submit" class="btn btn-danger btn-sm" value="Delete"> </form>--></td>
+          </tr>
+          
+          
+        </tbody>
+        {% endfor %}
+      </table>
+      {% else %}
+
+      <h4 class="text-center alert alert-info mt-3">No Post Available</h4>
+      {% endif %}
+
+</div>
+{% endblock contain %}

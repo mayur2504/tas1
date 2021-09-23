@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title class="st-font">M_V blog</title>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Crimson+Pro">
+    <link rel="stylesheet" href="{% static 'blog/css/boot.css' %}">
+    {% block cssedit %}<link rel="stylesheet" href="{% static 'blog/css/style.css' %}">{% endblock cssedit %}
+</head>
+<body>
+<div class="container-fluid bg-dark">
+    {% include 'blog/nav.html' %}
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            {% block msg %}
+            {% endblock msg %}
+        </div>
+    </div>
+    <div class="row">
+        {% block side %}
+        {% endblock side %}
+
+
+        {% block contain %}
+        {% endblock contain %}
+    </div>
+</div>
+
+
+
+    <script src="{% static 'blog/js/jquery.js' %}"></script>
+    <script src="{% static 'blog/js/popper.js' %}"></script>
+    <script src="{% static 'blog/js/bootstrap.js' %}"></script>    
+</body>
+</html>

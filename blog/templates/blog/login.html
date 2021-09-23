@@ -1,0 +1,50 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block contain %}
+<div class="col-sm-10">
+    <h3 class="my-5">Login Page</h3>
+  
+    <form action="" method="POST" novalidate>
+        {% csrf_token %}
+        {% for fm in form %}
+        <div class="form-group">
+            {{fm.label_tag}} {{fm}} <p class="text-warning">{{fm.errors|striptags}}</p><br>
+        </div>
+        {% endfor %}
+        
+        <table style="border: 3px solid black">
+            <tr>
+                <td>CAPTHC</td>
+                <td>
+                    <canvas id='myCanvas' width="250" height="80" style="background-color:beige">{{capt}}</canvas>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="test" class="mt-3 mb-3" name="captha"></td>
+            </tr>
+        </table>
+        <input type="submit" class="btn btn-primary " value="Login">
+        {% if form.non_field_errors %}
+        {% for er in form.non_field_errors %}
+        <p class="alert alert-warning my-5">{{er}}</p>
+        {% endfor %}
+        {% endif %}
+        <script>
+            var canvas = document.getElementById("myCanvas");
+            var ctx = canvas.getContext("2d");
+            ctx.font = "30px Comic Sans MS";
+            ctx.fillStyle = "red";
+            ctx.textAlign = "center";
+            ctx.fillText("{{capt}} + {{cap1}}", canvas.width/2, canvas.height/2);
+        </script>
+
+    </form>
+
+
+</div>
+
+
+
+
+
+{% endblock contain %}

@@ -1,0 +1,36 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block cssedit %}<link rel="stylesheet" href="{% static 'blog/css/style1.css' %}">{% endblock cssedit %}
+{% block contain %}
+<div>
+ <h3 class="my-5">Chat Room</h3>
+  {% for db in data %}
+  <br>
+  <!-- <div class="align-items-md-stretch colorjumbo">
+     <div class="h-100 p-5 text-white bg-dark rounded-3 container">
+         <h1 class="display-6">{{db.desc}}</h1>
+         <p class="lead">{{db.headline}}</p>
+         
+        </div>
+    </div>-->
+{% if request.user == db.user %}
+    <div class="container bg-success">
+      <p>{{db.desc}}</p>
+      <span class="time-right">You</span>
+    </div>
+    {% else %}
+    <div class="container darker">
+      <p>{{db.desc}}</p>
+      <span class="time-left">{{db.user}}</span>
+    </div>
+    {% endif %}
+  {% endfor %}
+
+  <a href="{% url 'Addpost' %}" class="btn btn-success">Add Post</a>
+</div>
+
+
+ 
+
+
+{% endblock contain %}
